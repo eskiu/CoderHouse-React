@@ -7,7 +7,7 @@ import { db } from "../firebase";
 import { getDoc, doc } from "firebase/firestore";
 
 
-const ItemDetailContainer = ({ isDark }) => {
+const ItemDetailContainer = () => {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -35,7 +35,7 @@ const ItemDetailContainer = ({ isDark }) => {
     return (
         <>
             <main className="item-container">
-                {loading ? <Spinner /> : <ItemDetail products={products} isDark={isDark} />}
+                {loading ? <Spinner /> : <ItemDetail products={products} />}
                 {error ? toast.error('Hubo un error') : null}
             </main>
 

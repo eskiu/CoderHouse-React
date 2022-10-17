@@ -1,8 +1,8 @@
 import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons"
 import { contexto } from "./CartContext";
+import Plus from './assets/Plus'
+import Minus from './assets/Minus'
 
 function ItemCount(props) {
     const { agregarAlCarrito } = useContext(contexto);
@@ -34,9 +34,13 @@ function ItemCount(props) {
             <div className="card-stock-container">
                 <div className="card-stock-counter">
                     <p><strong>Cantidad:</strong></p>
-                    <FontAwesomeIcon icon={faMinus} onClick={minus} />
+                    <div className="minus" onClick={minus}>
+                        <Minus />
+                    </div>
                     <p>{contador}</p>
-                    <FontAwesomeIcon icon={faPlus} onClick={plus} />
+                    <div className="plus" onClick={plus} >
+                        <Plus />
+                    </div>
                 </div>
                 {agregado ? <button disabled={contador === 0} onClick={confirm}>Confirmar selección</button>
                     : <button className="link-button" onClick={() => agregarAlCarrito(props.products, contador)}><Link to="/cart">Terminar mi compra</Link></button>}

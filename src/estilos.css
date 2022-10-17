@@ -1,16 +1,51 @@
-@import "./dark-mode.css";
+:root{
+    --darkmode-background: #393E46;
+    --darkmode-text: #EEEEEE;
+    --darkmode-element: #31383f;
+    --white: #FFFFFF;
+    
+    --lightmode-background: #F5F5F5;
+    --lightmode-text: #111517;
+    --lightmode-element: #ffffff;
+    --lightmode-input: #858585;
+    --dark: #000000;
+
+    --lightmode-bluetext: #303481;
+}   
+
+body.light{
+    --background-color: var(--lightmode-background);
+    --background-element: var(--lightmode-element);
+    --color-input: var(--lightmode-input);
+    --color: var(--lightmode-text);
+    --colorBlueBlack: var(--lightmode-bluetext);
+    --whiteBlack: var(--dark);
+    --blackWhite: var(--white);
+}
+
+body.dark{
+    --background-color: var(--darkmode-background);
+    --color: var(--darkmode-text);
+    --background-element: var(--darkmode-element);
+    --colorBlueBlack: var(--darkmode-text);
+    --whiteBlack: var(--white);
+    --blackWhite: var(--dark);
+}
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+}    
 
 html , body , #root {
     min-height: 100vh;
     font-family: "proxima-nova", sans-serif;
-}
+}    
 
+body{
+    background: var(--background-color);
+}
 /* ---- NavBar start ---- */
 
 .nav-container{
@@ -18,7 +53,9 @@ html , body , #root {
     justify-content: space-between;
     align-items: center;
     padding: 1.5vh 50px;
-    box-shadow: rgba(0, 0, 0, 0.596) 1px 5px 25px -6px;
+    background-color: var(--background-element);
+    color: var(--color);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }
 
 .nav-container a, .nav-container a:visited{
@@ -27,16 +64,21 @@ html , body , #root {
 
 .nav-container h3{
     font-weight: bold;
+    color: var(--colorBlueBlack);
+    text-decoration: none;
 }
 
 .nav-link{
     text-decoration: none;
     display: flex;
     margin: 0 .6rem;
+    color: var(--colorBlueBlack);
 }
 
 .links-container{
     display: flex;
+    background-color: var(--background-element);
+    color: var(--colorBlueBlack);
 }
 
 .links-container ul{
@@ -54,6 +96,8 @@ html , body , #root {
 .links-container ul li p{
     margin: 0 .6rem;
     cursor: default;
+    color: var(--colorBlueBlack);
+    font-weight: bold;
 }
 
 .links-container ul ul{
@@ -61,6 +105,7 @@ html , body , #root {
     position: absolute;
     background-color: #FFFFFC;
     border: 1px solid #000;
+    color: var(--colorBlueBlack);
     border-radius: 2%;
     left: -10px;
 }
@@ -69,6 +114,7 @@ html , body , #root {
     float: none;
     text-align: center;
     padding: .3rem .5rem;
+    background-color: var(--background-element);
 }
 
 .links-container ul li:hover > ul{
@@ -80,16 +126,24 @@ html , body , #root {
     width: 100%;
 }
 
+.links-container a{
+    color: var(--colorBlueBlack);
+    font-weight: bold;
+}
+
 .cart-btn{
     position: relative;
 }
 
 .cart-items{
     position: absolute;
-    top: -13px;
-    right: -4px;
+    top: -9px;
+    right: -6px;
     padding: 0 3px;
     border-radius: 30%;
+    color: var(--blackWhite);
+    background-color: var(--colorBlueBlack);
+    font-size: 0.9em;
 }
 
 .brandLogo{
@@ -98,20 +152,40 @@ html , body , #root {
     margin-top: 0.3rem;
 }
 
+.darkMode-toggle{
+    display: flex;
+    width: fit-content;
+    margin-left: 0.5rem;
+}
+
+.darkMode-toggle svg{
+    width: 25px;
+    fill: var(--color);
+    stroke: var(--color);
+    cursor: pointer;
+}
+
 .svg-inline--fa{
     height: 1.2em;
     cursor: pointer;
 }
 
+.nav-icon{
+    display: flex;
+    width: fit-content;
+    margin-left: 0.5rem;
+}
+
+.nav-icon svg{
+    width: 25px;
+    fill: var(--color);
+    cursor: pointer;
+    stroke: var(--color);
+}
+
 svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
     margin: 0 0.5em;
 }
-
-/* .links-container .fa-sun, .links-container .fa-moon, .links-container .fa-cart-shopping{
-    /* color: #1F4E5F; */
-/* } */
-
-/* ---- */
 
 /* ---- NavBar end ---- */
 
@@ -126,15 +200,34 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 }
 
 .home-container a button{
-    border: 1px solid black;
+    border: 1px solid var(--color);
     border-radius: 5%;
     padding: 1rem;
     font-weight: bold;
     cursor: pointer;
+    color: var(--color);
+    background-color: var(--background-element);
+    transition: all 0.1s;
 }
 
-.home-img-container img{
- width: 600px;
+.home-container a:hover{
+    transform: scale(1.05);
+    transition: all 0.1s;
+}
+
+.home-img-container{
+    display: flex;
+    align-items: center;
+}
+
+.home-img-container h1{
+    font-size: 15em;
+    color: var(--color);
+}
+
+.home-img-container svg{
+ width: 400px;
+ fill: var(--color);
 }
 
 /* ---- Home end ---- */
@@ -186,17 +279,25 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 
 .card-stock-container button{
     border: none;
-    background-color: #303481;
+    background-color: var(--colorBlueBlack);
     padding: .3rem;
     border-radius: 3px;
     cursor: pointer;
     cursor: hand;
-    color: #FFFFFC;
+    color: var(--blackWhite);
+    font-weight: bold;
+    border: 1px solid var(--blackWhite);
+    transition: all 0.05s;
 }
 
 .card-stock-container button:disabled{
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+.card-stock-container button:hover{
+    transform: scale(1.05);
+    transition: all 0.05s;
 }
 
 .card-stock-counter{
@@ -205,15 +306,15 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
     align-items: center;
 }
 
-.card-stock-counter i{
-    margin: 0 .5rem;
+.card-stock-counter svg{
     cursor: pointer; 
     cursor: hand;
     display: flex;
     align-items: center;
     border: 1px solid #2d42632b;
     border-radius: 5px;
-    padding: .3rem;
+    margin: 0 .8rem;
+    width: 20px;
 }
 
 .card-stock-counter p{
@@ -222,7 +323,7 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 
 .link-button a{
     text-decoration: none;
-    color: #FFFFFC;
+    color: var(--blackWhite);
 }
 
 /* ---- Item Count end ---- */
@@ -234,9 +335,9 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
     align-items: center;
     justify-content: center;
     text-align: center;
-    border: 10px solid #f3f3f3;
+    border: 10px solid var(--whiteBlack);
     border-top: 10px solid #3498db;
-    background-color: #FFFFFC;
+    background-color: var(--background-color);
     border-radius: 50%;
     width: 80px;
     height: 80px;
@@ -293,6 +394,9 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
     align-items: center;
     justify-content: space-evenly;
     border-top: 1px solid rgb(233, 229, 229);
+    background-color: var(--background-element);
+    color: var(--color);
+    border-radius: 3px;
 }
 
 .card-text .tittle-card{
@@ -304,6 +408,7 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 .card-text .price-card{
     font-size: 1.3em;
     font-weight: bold;
+    color: var(--colorBlueBlack);
 }
 
 .imgContainer{
@@ -330,6 +435,8 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
     min-height: 94.2vh;
     display: flex;
     justify-content: space-between;
+    background-color: var(--background-color);
+    color: var(--color);
 }
 
 .detail-card-container{
@@ -338,6 +445,10 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
     margin-top: 3rem;
     padding: 0 3rem;
     height: 50%;
+}
+
+.detail-title-section p{
+    color: var(--colorBlueBlack);
 }
 
 .detail-title-section h1{
@@ -367,6 +478,7 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 .detail-price-section{
     font-size: 1.5em;
     font-weight: bold;
+    color: var(--colorBlueBlack);
 }
 
 .detail-description{
@@ -391,6 +503,7 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 
 .cartBackground{
     min-height: 94.2vh;
+    color: var(--color);
 }
 
 .cart-container{
@@ -398,10 +511,11 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
     align-items: center;
     justify-content: space-around;
     width: 100%;
+    color: var(--color);
 }
 
 .cart-products-container{
-    width: 50%;
+    width: 70%;
 }
 
 .empty-cart{
@@ -439,7 +553,7 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 .cart-item-container{
     display: block;
     margin-top: 1rem;
-    border: 2px solid white;
+    border: 2px solid var(--whiteBlack);
 }
 
 .cart-item{
@@ -467,6 +581,7 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 .cart-item-descr a{
     text-decoration: none;
     width: 80%;
+    display: flex;
 }
 
 .cart-item-descr h3{
@@ -475,10 +590,11 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    float: left;
+    color: var(--color);
 }
 .cart-item-descr{
     width: 60%;
+    color: var(--color);
 }
 .cart-item-descr p{
     font-size: .9em;
@@ -486,12 +602,13 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 
 .cart-item-button button{
     border: none;
-    background-color: #303481;
+    background-color: var(--colorBlueBlack);
     padding: .3rem;
     border-radius: 3px;
     cursor: pointer;
     cursor: hand;
-    color: #FFFFFC;
+    color: var(--blackWhite);
+    font-weight: bold;
 }
 
 .cart-total{
@@ -503,7 +620,7 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 
 .cart-checkout-container{
     display: block;
-    border: 2px solid white;
+    border: 2px solid var(--whiteBlack);
     border-radius: 3px;
     padding: 2rem;
     text-align: center;
@@ -528,7 +645,7 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 
 .cart-checkout-input input{
     border: none;
-    border-bottom: 1px solid #2d42632b;
+    border-bottom: 1px solid #2d426344;
     padding: .5rem;
     width: 100%;
 }
@@ -548,21 +665,84 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
 .cart-checkout-buttons button{
     margin: 1rem;   
     border: none;
-    background-color: #303481;
+    background-color: var(--colorBlueBlack);
     padding: .5rem;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer; 
     cursor: hand;
-    color: #FFFFFC;
+    color: var(--blackWhite);
 }
 
 .cart-checkout-buttons button:disabled{
-    background-color: #ccc;
+    background-color: rgb(146, 146, 146);
     cursor: not-allowed;
+    color: #000000;
 }
 /* ---- Cart end---- */
 
+
+
+@media (max-width: 1300px){
+
+    .cart-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart-container .cart-products-container{
+        width: 90%;
+    }
+
+    .home-img-container h1{
+        font-size: 9em;
+    }
+    
+    .home-img-container svg{
+     width: 250px;
+    }
+}
+
+@media (max-width: 800px){
+
+    .cart-container .cart-item-container .cart-item{
+            display: flex;
+            flex-direction: column;
+    }
+    
+    .cart-item .cart-item-descr{
+        width: 90%;
+        text-align: center;
+    }
+
+    .cart-item .cart-item-descr a{
+        width: 100%;
+        font-size: 1.3em;
+    }
+
+    .cart-item .cart-item-descr p{
+        font-size: 1.1em;
+    }
+
+    .cart-item .cart-item-img a img{
+        margin: 0;
+        margin-top: 10px;
+        height: 130px;
+        width: 130px;
+    }
+
+    .cart-item .cart-item-button{
+        margin-bottom: 1rem;
+    }
+
+    .home-img-container h1{
+        font-size: 5em;
+    }
+    
+    .home-img-container svg{
+     width: 150px;
+    }
+}
 
 @media (max-width: 390px) {
     .nav-container{

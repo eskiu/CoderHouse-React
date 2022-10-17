@@ -3,14 +3,14 @@ import { contexto } from "../CartContext"
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 
-const Cart = ({ isDark }) => {
+const Cart = () => {
     const { carrito } = useContext(contexto)
 
     return (
         <>
-            <div className={isDark ? "cartBackground dark-mode-bckg dark-mode-text" : "cartBackground light-mode-bckg light-mode-text"}>
+            <div className="cartBackground">
                 {carrito.length > 0
-                    ? <CartContainer isDark={isDark} />
+                    ? <CartContainer />
                     : <div className="backStore">
                         <div className="empty-cart">No hay productos en el carrito</div>
                         <div className="b-back-store">

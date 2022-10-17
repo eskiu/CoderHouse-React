@@ -6,7 +6,7 @@ import Spinner from "../widgets/Spinner";
 import { db } from "../firebase";
 import { getDocs, query, collection, where } from "firebase/firestore";
 
-const ItemListContainer = ({ isDark }) => {
+const ItemListContainer = () => {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -46,8 +46,8 @@ const ItemListContainer = ({ isDark }) => {
 
     return (
         <>
-            <main className={isDark ? "item-container dark-mode-bckg" : "item-container light-mode-bckg"}>
-                {loading ? <Spinner /> : <ItemList products={productos} isDark={isDark} />}
+            <main className="item-container">
+                {loading ? <Spinner /> : <ItemList products={productos} />}
                 {error ? toast.error('Hubo un error') : null}
             </main>
 

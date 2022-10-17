@@ -1,28 +1,27 @@
 import Widget from "../widgets/CartWidget";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from "react-router-dom"
+import DarkMode from "../DarkMode";
 
-function Header({ handleDarkMode, isDark }) {
+function Header() {
 
     return (
-        <header className={isDark ? "nav-container dark-mode-elmnt dark-mode-text" : "nav-container light-mode-elmnt light-mode-text"}>
-            <NavLink to="/shop" className={isDark ? "dark-mode-text" : "light-mode-blue-text"}><h3>SHIRTY</h3></NavLink>
-            <nav className={isDark ? "links-container dark-mode-elmnt dark-mode-text" : "links-container light-mode-elmnt light-mode-blue-text"}>
+        <header className="nav-container">
+            <NavLink to="/shop"><h3>SHIRTY</h3></NavLink>
+            <nav className="links-container">
                 <ul>
                     <li>
                         <p>Ropa</p>
-                        <ul className={isDark ? "list-option dark-mode-text" : "list-option light-mode-blue-text"}>
-                            <li className={isDark ? "dark-mode-elmnt" : "light-mode-elmnt"}><NavLink to="categoria/men's clothing" className={isDark ? "list-option dark-mode-text" : "list-option light-mode-blue-text"}>Hombre</NavLink></li>
-                            <li className={isDark ? "dark-mode-elmnt" : "light-mode-elmnt"}><NavLink to="categoria/women's clothing" className={isDark ? "list-option dark-mode-text" : "list-option light-mode-blue-text"}>Mujer</NavLink></li>
+                        <ul className="list-option">
+                            <li><NavLink to="categoria/men's clothing" className="list-option">Hombre</NavLink></li>
+                            <li><NavLink to="categoria/women's clothing" className="list-option">Mujer</NavLink></li>
                         </ul>
                     </li>
                 </ul>
-                <NavLink to="accesorios/jewelery" className={isDark ? "nav-link dark-mode-text" : "nav-link light-mode-blue-text"}>Joyeria</NavLink>
-                <NavLink to="accesorios/electronics" className={isDark ? "nav-link dark-mode-text" : "nav-link light-mode-blue-text"}>Electrónica</NavLink>
+                <NavLink to="accesorios/jewelery" className="nav-link">Joyeria</NavLink>
+                <NavLink to="accesorios/electronics" className="nav-link">Electrónica</NavLink>
 
-                <NavLink to="cart" className={isDark ? "dark-mode-text" : "light-mode-blue-text"}><Widget /></NavLink>
-                <FontAwesomeIcon icon={isDark ? faSun : faMoon} onClick={() => handleDarkMode()} />
+                <NavLink to="cart"><Widget /></NavLink>
+                <DarkMode />
             </nav>
         </header>
     )

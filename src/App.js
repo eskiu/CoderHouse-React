@@ -1,7 +1,6 @@
 import NavBar from "./components/layout/NavBar"
 import ItemListContainer from "./components/pages/ItemListContainer"
 import ItemDetailContainer from "./components/pages/ItemDetailContainer"
-import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Cart from "./components/pages/Cart"
@@ -11,23 +10,18 @@ import Home from "./components/pages/Home"
 
 function App() {
 
-    const [isDark, setIsDark] = useState(false)
-
-    const handleDarkMode = () => {
-        setIsDark(!isDark)
-    }
 
     return (
         <MiProvider>
             <BrowserRouter>
-                <NavBar handleDarkMode={handleDarkMode} isDark={isDark} />
+                <NavBar />
                 <Routes>
-                    <Route path="/" element={<Home isDark={isDark} />}></Route>
-                    <Route path="/shop" element={<ItemListContainer isDark={isDark} />} />
+                    <Route path="/" element={<Home />}></Route>
+                    <Route path="/shop" element={<ItemListContainer />} />
                     <Route path="/categoria/:id" element={<ItemListContainer />} />
                     <Route path="/accesorios/:id" element={<ItemListContainer />} />
-                    <Route path="/item/:id" element={<ItemDetailContainer isDark={isDark} />} />
-                    <Route path="/cart" element={<Cart isDark={isDark} />} />
+                    <Route path="/item/:id" element={<ItemDetailContainer />} />
+                    <Route path="/cart" element={<Cart />} />
                 </Routes>
                 <ToastContainer />
             </ BrowserRouter>
