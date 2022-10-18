@@ -592,10 +592,12 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
     white-space: nowrap;
     color: var(--color);
 }
+
 .cart-item-descr{
     width: 60%;
     color: var(--color);
 }
+
 .cart-item-descr p{
     font-size: .9em;
 }
@@ -741,6 +743,10 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa{
     
     .home-img-container svg{
      width: 150px;
+    }
+
+    .cart-item-descr h3{
+        width: 100%;
     }
 }
 
